@@ -55,6 +55,9 @@
             <ul class="nav navbar-nav navbar-right">
                 <c:url value="/admin/list_courses_adm" var="list_courses"/>
                 <li><a href="${list_courses}">Список курсов</a></li>
+                <c:url value="/admin/add_course" var="add_course"/>
+                <li><a href="${add_course}">Добавить курс</a></li>
+
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tutorial<b class="caret"></b></a>
                     <ul class="dropdown-menu">

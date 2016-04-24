@@ -3,8 +3,10 @@ package ua.danni.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ua.danni.entity.Courses;
+import ua.danni.entity.User;
 import ua.danni.repository.CoursesRepository;
 import ua.danni.service.CoursesService;
+import ua.danni.service.UserService;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -18,11 +20,17 @@ public class CoursesServiceImpl implements CoursesService {
     @PersistenceContext
     private EntityManager entityManager;
 
+
+    @Autowired
+    UserService userService;
+
     @Autowired
     private CoursesRepository coursesRepository;
 
     @Override
     public Courses addCourses(Courses courses) {
+        User user = userService.getById(1);
+        courses.setUserByIdProfessor(user);
         Courses savedCourses = coursesRepository.saveAndFlush(courses);
 
         return savedCourses;
@@ -33,12 +41,10 @@ public class CoursesServiceImpl implements CoursesService {
         coursesRepository.delete(id);
     }
 
-  /*@Override
-    public Courses getByName(String name) {
-       //Query query = entityManager. createQuery("Select courseName from CousesEntity ");
-       //@Query("select b from CousesEntity b where b.courseName = :name")
-        return coursesRepository.findByName(name);
-    }*/
+  @Override
+    public Courses getById(int idcourse) {
+        return entityManager.find(Courses.class,idcourse);
+    }
 
     @Override
     public Courses editCourses(Courses courses) {

@@ -48,7 +48,7 @@
                     <td>${bean.start}</td>
                     <td>${bean.end}</td>
                     <td><a href="/admin/delete/idcourse/${bean.idCourses}">delete</a></td>
-                    <td><a href="/controller?command=editCourse&id_courses=${bean.idCourses}">edit</a></td>
+                    <td><a href="/admin/edit_course/${bean.idCourses}">edit</a></td>
                   </tr>
 
                 </c:forEach>

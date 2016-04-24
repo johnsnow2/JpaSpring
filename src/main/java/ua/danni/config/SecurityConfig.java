@@ -37,9 +37,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         // указываем правила запросов
                         // по которым будет определятся доступ к ресурсам и остальным данным
                 .authorizeRequests()
-                .antMatchers("/resources/**", "/**").permitAll()
-                .anyRequest().permitAll()
-                .and();
+                .antMatchers("/resources/**").permitAll()
+                 .and();
 
         http.formLogin()
                 // указываем страницу с формой логина
@@ -64,6 +63,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         // делаем не валидной текущую сессию
                 .invalidateHttpSession(true);
 
+
+        http.authorizeRequests()
+                .antMatchers("/admin/**").access("hasRole('ADMIN')")
+                .antMatchers("/user/**").access("hasRole('USER')")
+                .antMatchers("/professor/**").access("hasRole('PROFESSOR')")
+                .and().formLogin().defaultSuccessUrl("/", false);
     }
 
     // Указываем Spring контейнеру, что надо инициализировать <b></b>ShaPasswordEncoder

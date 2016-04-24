@@ -9,4 +9,8 @@ public interface UserService {
     User getUser(String login);
 
     User getByName(String name);
+
+    String getOnlyName();
+
+    User getById(int id);
 }

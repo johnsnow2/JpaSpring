@@ -8,10 +8,10 @@ import ua.danni.entity.Courses;
 
 @Component
 public interface CoursesRepository extends JpaRepository<Courses, Integer> {
-    //@Query("select b from Couses b where b.name = :name")
-    //findByName(@Param("name") String name);
 
-       //Courses findByName(String name);
+   // @Query("select b from Courses b where b.idCourses = :idCourses")
+    //Courses findByName(@Param("name") int idCourses);
+
 
 
 }

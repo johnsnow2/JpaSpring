@@ -41,6 +41,9 @@
       <p><a class="btn btn-lg btn-danger" href="<c:url value="/logout" />" role="button">Выйти</a></p>
 
     </sec:authorize>
+<sec:authorize access="isAuthenticated()">
+<h1><a href="/menu">Перейти в меню</a></h1>
+  </sec:authorize>
   </div>
 
   <div class="footer">

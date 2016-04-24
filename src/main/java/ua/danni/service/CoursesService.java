@@ -13,7 +13,7 @@ public interface CoursesService {
 
     void delete(int id);
 
-    //Courses getByName(String name);
+    Courses getById(int idcourse);
 
     Courses editCourses(Courses courses);
 
